@@ -1,63 +1,64 @@
-Pseudo Code
+//Pseudo Code
 
-Write a function that takes a computer input and a player input
+//Write a function that takes a computer input and a player input
 
-Create function declaration playRound with two parameters
+//Create function declaration playRound with two parameters
 function playRound(compSelection, playerSelection){
 
-Create a statement that changes playerSelection to all lowercase
-
-playerSelection = toLowerCase
-
-}
-
-Create a switch statement that compares the values of the two parameters
-
-switch(true){
-
-    //create comparision using logic operator && to see if a value beats another value.
-    case (compSelection === 'rock' && playerSelection === 'scissor') :
-        console.log('You Lose! Rock beats Scissor')
-        break;
+    //Create a statement that changes playerSelection to all lowercase
     
-    case (compSelection === 'paper' && playerSelection === 'rock') :
-        console.log('You Lose! Scissor beats Rock')
-        break;
-
-    case (compSelection === 'scissor' && playerSelection === 'paper') :
-        console.log('You Lose! Scissor beats Rock')
-        break;
+    playerSelection = playerSelection.toLowerCase();
     
-    case (compSelection === 'rock' && playerSelection === 'paper') :
-        console.log('You Win! Paper beats Rock')
-        break;
-
-    case (compSelection === 'paper' && playerSelection === 'scissor') :
-        console.log('You Win! Scissor beats Paper')
-        break;
-
-    case (compSelection === 'scissor' && playerSelection === 'rock') :
-        console.log('You Win! Rock beats Scissor')
-        break;
-
-    case (compSelection === 'rock' && playerSelection === 'rock') :
-        console.log('Draw! Play Again!')
-        playRound();
-
-    case (compSelection === 'scissor' && playerSelection === 'scissor') :
-        console.log('Draw! Play Again!')
-        playRound();
-
-    case (compSelection === 'paper' && playerSelection === 'paper') :
-        console.log('Draw! Play Again!')
-        playRound();
+    }
     
-    Default :
-    console.log("What happened?");
-
-
-}
-
-Create rules for winning and losing
-
-Print a message declaring a winner 
+    ///Create a switch statement that compares the values of the two parameters
+    
+    switch(true){
+    
+        //create comparision using logic operator && to see if a value beats another value.
+        case (compSelection === 'rock' && playerSelection === 'scissor') :
+            console.log('You Lose! Rock beats Scissor')
+            break;
+        
+        case (compSelection === 'paper' && playerSelection === 'rock') :
+            console.log('You Lose! Scissor beats Rock')
+            break;
+    
+        case (compSelection === 'scissor' && playerSelection === 'paper') :
+            console.log('You Lose! Scissor beats Rock')
+            break;
+        
+        case (compSelection === 'rock' && playerSelection === 'paper') :
+            console.log('You Win! Paper beats Rock')
+            break;
+    
+        case (compSelection === 'paper' && playerSelection === 'scissor') :
+            console.log('You Win! Scissor beats Paper')
+            break;
+    
+        case (compSelection === 'scissor' && playerSelection === 'rock') :
+            console.log('You Win! Rock beats Scissor')
+            break;
+    
+        case (compSelection === 'rock' && playerSelection === 'rock') :
+            console.log('Draw! Play Again!')
+            playRound();
+    
+        case (compSelection === 'scissor' && playerSelection === 'scissor') :
+            console.log('Draw! Play Again!')
+            playRound();
+    
+        case (compSelection === 'paper' && playerSelection === 'paper') :
+            console.log('Draw! Play Again!')
+            playRound();
+        
+        default :
+        console.log("That's not a choice!");
+    
+    
+    }
+    
+    //Create rules for winning and losing
+    
+    //Print a message declaring a winner 
+    
