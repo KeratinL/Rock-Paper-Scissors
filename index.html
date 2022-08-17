@@ -49,7 +49,25 @@
         }
 
         function game() { 
-            playRound(getComputerChoice(), getPlayerChoice());
+            let compWins = 0;
+            
+            let playerWins = 0;
+            
+            for(i = 0; i < 5; i++) {
+
+                if (playRound(getComputerChoice(), getPlayerChoice()) == 'compWins') {
+                    compWins += 1;
+                    compWins === 3)
+
+
+                }
+                else 
+                {
+                    playerWins += 1;
+                }
+
+            }
+            
         }
 
 
@@ -69,40 +87,35 @@
             let playerWins = 0;
 
             ///Create a switch statement that compares the values of the two parameters
-            for(i = 0; i < 5; i++) {
+            
 
             switch(true){
 
             //create comparision using logic operator && to see if a value 'beats' another value.
             case (compSelection === 'rock' && playerSelection === 'scissor'):
                 console.log('You Lose! Rock beats Scissor');
-                compWins += 1;
-                break;
+                return 'compWins';
 
             case (compSelection === 'paper' && playerSelection === 'rock'):
                 console.log('You Lose! Paper beats Rock');
-                compWins += 1;
-                break;
+                return 'compWins';
 
             case (compSelection === 'scissor' && playerSelection === 'paper'):
                 console.log('You Lose! Scissor beats Paper');
-                compWins += 1;
-                break;
+                return 'compWins';
+
 
             case (compSelection === 'rock' && playerSelection === 'paper'):
                 console.log('You Win! Paper beats Rock');
-                playerWins += 1;
-                break;
+                return 'playerWins';
 
             case (compSelection === 'paper' && playerSelection === 'scissor'):
                 console.log('You Win! Scissor beats Paper');
-                playerWins += 1;
-                break;
+                return 'playerWins';
 
             case (compSelection === 'scissor' && playerSelection === 'rock'):
                 console.log('You Win! Rock beats Scissor');
-                playerWins += 1;
-                break;
+                return 'playerWins';
 
             case (compSelection === 'rock' && playerSelection === 'rock'):
                 console.log('Draw! Play Again!');
@@ -125,13 +138,6 @@
 
 
             }
-        }
-
-        checkWins();
-            //Create rules for winning and losing
-
-            //Print a message declaring a winner 
-
         }
 
         game();
