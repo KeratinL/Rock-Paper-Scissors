@@ -10,6 +10,7 @@
     <button class="rock">rock</button>
     <button class="paper">paper</button>
     <button class="scissor">scissor</button>
+    <div class="result"></div>
     <script>
 
 
@@ -74,6 +75,9 @@
             });
 
             
+
+
+            
             /*
             for(i = 0; i < 5; i++) {
 
@@ -119,49 +123,51 @@
 
             //Create a statement that changes playerSelection to all lowercase
             playerSelection = checkValidAnswer(playerSelection);
+            //Create variable reference to display result
+            const div = document.querySelector('div');
             ///Create a switch statement that compares the values of the two parameters
 
             switch(true){
 
             //create comparision using logic operator && to see if a value 'beats' another value.
             case (compSelection === 'rock' && playerSelection === 'scissor'):
-                console.log('You Lose! Rock beats Scissor');
+                div.textContent = 'You Lose! Rock beats Scissor';
                 return 'compWins';
 
             case (compSelection === 'paper' && playerSelection === 'rock'):
-                console.log('You Lose! Paper beats Rock');
+                div.textContent =  'You Lose! Paper beats Rock';
                 return 'compWins';
 
             case (compSelection === 'scissor' && playerSelection === 'paper'):
-                console.log('You Lose! Scissor beats Paper');
+                div.textContent =  'You Lose! Scissor beats Paper';
                 return 'compWins';
 
             case (compSelection === 'rock' && playerSelection === 'paper'):
-                console.log('You Win! Paper beats Rock');
+                div.textContent =  'You Win! Paper beats Rock';
                 return 'playerWins';
 
             case (compSelection === 'paper' && playerSelection === 'scissor'):
-                console.log('You Win! Scissor beats Paper');
+                div.textContent =  'You Win! Scissor beats Paper';
                 return 'playerWins';
 
             case (compSelection === 'scissor' && playerSelection === 'rock'):
-                console.log('You Win! Rock beats Scissor');
+                div.textContent =  'You Win! Rock beats Scissor';
                 return 'playerWins';
 
             case (compSelection === 'rock' && playerSelection === 'rock'):
-                console.log('Draw!');
+                div.textContent =  'Draw!';
                 break;
 
             case (compSelection === 'scissor' && playerSelection === 'scissor'):
-                console.log('Draw!');
+                div.textContent =  'Draw!';
                 break;
 
             case (compSelection === 'paper' && playerSelection === 'paper'):
-                console.log('Draw!')
+                div.textContent =  'Draw!'
                 break;
 
             default:
-            console.log("Your choice is invalid");
+                div.textContent =  'Your choice is invalid';
             playRound(getComputerChoice(), getPlayerChoice());
 
 
