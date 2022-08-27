@@ -11,6 +11,8 @@
     <button class="paper">paper</button>
     <button class="scissor">scissor</button>
     <div class="result"></div>
+    <div class="score"></div>
+    
     <script>
 
 
@@ -59,57 +61,48 @@
             
             let playerWins = 0;
 
+            let round = 0;
+            
+            const divScore = document.querySelector('div.score');
+
             const rock = document.querySelector('button.rock');
             rock.addEventListener('click', () => {
-                playRound(getComputerChoice(), 'rock')
+                round += playRound(getComputerChoice(), 'rock')
             } );
 
             const paper = document.querySelector('button.paper');
             paper.addEventListener('click', () => {
-                playRound(getComputerChoice(), 'paper')
+                round += playRound(getComputerChoice(), 'paper')
             });
 
             const scissor = document.querySelector('button.scissor');
             scissor.addEventListener('click', () => {
-                playRound(getComputerChoice(), 'scissor')
+                round += playRound(getComputerChoice(), 'scissor')
             });
-
             
-
-
+            divScore.textContent = `Computer Score: ${compWins} Player Score: ${playerWins}`;
             
-            /*
-            for(i = 0; i < 5; i++) {
+            if ( round == 'compWins') {
+                
+                compWins += 1;
+                
+                if (compWins === 3) {  
+                
+                    return console.log('The Computer Wins!');
 
-                let round = playRound(getComputerChoice(), getPlayerChoice());
-
-                if ( round == 'compWins') {
-                    
-                    compWins += 1;
-                    
-                    if (compWins === 3) {  
-                    
-                        return console.log('The Computer Wins!');
-
-                    }
-
-                }
-                else if (round == 'playerWins')
-                {
-                    playerWins += 1;
-                    if (playerWins === 3) {
-                         return console.log('You win!');
-                    }
-                }
-
-                else {
-                    i += -1;
                 }
 
             }
-            */
-        }
+            else if (round == 'playerWins')
+            {
+                playerWins += 1;
+                if (playerWins === 3) {
+                        return console.log('You win!');
+                }
+            }
 
+            
+        }
         
         function checkValidAnswer(playerSelection){
             (!(playerSelection == undefined)) ? playerSelection = playerSelection.toLowerCase() : playerSelection = '';
@@ -124,50 +117,50 @@
             //Create a statement that changes playerSelection to all lowercase
             playerSelection = checkValidAnswer(playerSelection);
             //Create variable reference to display result
-            const div = document.querySelector('div');
+            const divResult = document.querySelector('div.result');
             ///Create a switch statement that compares the values of the two parameters
 
             switch(true){
 
             //create comparision using logic operator && to see if a value 'beats' another value.
             case (compSelection === 'rock' && playerSelection === 'scissor'):
-                div.textContent = 'You Lose! Rock beats Scissor';
+                divResult.textContent = 'You Lose! Rock beats Scissor';
                 return 'compWins';
 
             case (compSelection === 'paper' && playerSelection === 'rock'):
-                div.textContent =  'You Lose! Paper beats Rock';
+                divResult.textContent = 'You Lose! Paper beats Rock';
                 return 'compWins';
 
             case (compSelection === 'scissor' && playerSelection === 'paper'):
-                div.textContent =  'You Lose! Scissor beats Paper';
+                divResult.textContent = 'You Lose! Scissor beats Paper';
                 return 'compWins';
 
             case (compSelection === 'rock' && playerSelection === 'paper'):
-                div.textContent =  'You Win! Paper beats Rock';
+                divResult.textContent = 'You Win! Paper beats Rock';
                 return 'playerWins';
 
             case (compSelection === 'paper' && playerSelection === 'scissor'):
-                div.textContent =  'You Win! Scissor beats Paper';
+                divResult.textContent = 'You Win! Scissor beats Paper';
                 return 'playerWins';
 
             case (compSelection === 'scissor' && playerSelection === 'rock'):
-                div.textContent =  'You Win! Rock beats Scissor';
+                divResult.textContent = 'You Win! Rock beats Scissor';
                 return 'playerWins';
 
             case (compSelection === 'rock' && playerSelection === 'rock'):
-                div.textContent =  'Draw!';
+                divResult.textContent = 'Draw!';
                 break;
 
             case (compSelection === 'scissor' && playerSelection === 'scissor'):
-                div.textContent =  'Draw!';
+                divResult.textContent = 'Draw!';
                 break;
 
             case (compSelection === 'paper' && playerSelection === 'paper'):
-                div.textContent =  'Draw!'
+                divResult.textContent = 'Draw!'
                 break;
 
             default:
-                div.textContent =  'Your choice is invalid';
+                divResult.textContent = 'Your choice is invalid';
             playRound(getComputerChoice(), getPlayerChoice());
 
 
