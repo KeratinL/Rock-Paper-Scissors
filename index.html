@@ -10,8 +10,10 @@
     <button class="rock">rock</button>
     <button class="paper">paper</button>
     <button class="scissor">scissor</button>
-    <div class="result"></div>
     <div class="score"></div>
+    <div class="result"></div>
+    <div class="winner"></div>
+    
     
     <script>
 
@@ -57,114 +59,130 @@
         }
         */
         function game() { 
-            let compWins = 0;
             
-            let playerWins = 0;
-
-            let round = 0;
-            
-            const divScore = document.querySelector('div.score');
-
             const rock = document.querySelector('button.rock');
-            rock.addEventListener('click', () => {
-                round += playRound(getComputerChoice(), 'rock')
-            } );
-
             const paper = document.querySelector('button.paper');
-            paper.addEventListener('click', () => {
-                round += playRound(getComputerChoice(), 'paper')
-            });
-
             const scissor = document.querySelector('button.scissor');
-            scissor.addEventListener('click', () => {
-                round += playRound(getComputerChoice(), 'scissor')
-            });
+
+            const divScore = document.querySelector('div.score');
             
             divScore.textContent = `Computer Score: ${compWins} Player Score: ${playerWins}`;
             
-            if ( round == 'compWins') {
-                
-                compWins += 1;
-                
-                if (compWins === 3) {  
-                
-                    return console.log('The Computer Wins!');
+            let compWins = 0;
+            let playerWins = 0;
 
-                }
+            rock.addEventListener('click', () => {
+                playRound(getComputerChoice(), 'rock');
+            });
 
-            }
-            else if (round == 'playerWins')
-            {
-                playerWins += 1;
-                if (playerWins === 3) {
-                        return console.log('You win!');
-                }
-            }
+            paper.addEventListener('click', () => {
+                playRound(getComputerChoice(), 'paper');
+            });
 
+            scissor.addEventListener('click', () => {
+                playRound(getComputerChoice(), 'scissor');
+            }); 
+                    
             
         }
-        
-        function checkValidAnswer(playerSelection){
-            (!(playerSelection == undefined)) ? playerSelection = playerSelection.toLowerCase() : playerSelection = '';
-            return playerSelection;
+
+        function logResult(round){
+            
+
+
+
+            const winner = document.querySelector('div.winner');
+
+            
+                /* if I need a loop
+                if (round === 'Draw!'){
+                    i -= 1;
+                }
+                */
+                if ( round == 'compWins') {
+                    
+                    compWins += 1;
+                    
+                    if (compWins === 3) {  
+                    
+                        winner.textContent = 'The Computer Wins!';
+
+                    }
+
+                }
+                else if (round == 'playerWins')
+                {
+                    playerWins += 1;
+                    if (playerWins === 3) {
+                            winner.textContent = 'You win!';
+                    }
+                }
+
+                return (compWins, playerWins);
         }
-        
         //console.log(getComputerChoice()); Debug getComputerChoice()
 
         //Create function declaration playRound with two parameters
         function playRound(compSelection, playerSelection){
-
-            //Create a statement that changes playerSelection to all lowercase
-            playerSelection = checkValidAnswer(playerSelection);
+  
             //Create variable reference to display result
             const divResult = document.querySelector('div.result');
-            ///Create a switch statement that compares the values of the two parameters
 
+            let round = '';
+            
+            //Create a switch statement that compares the values of the two parameters
             switch(true){
 
             //create comparision using logic operator && to see if a value 'beats' another value.
             case (compSelection === 'rock' && playerSelection === 'scissor'):
                 divResult.textContent = 'You Lose! Rock beats Scissor';
-                return 'compWins';
+                round +='compWins';
+                break;
 
             case (compSelection === 'paper' && playerSelection === 'rock'):
                 divResult.textContent = 'You Lose! Paper beats Rock';
-                return 'compWins';
+                round +='compWins';
+                break;
 
             case (compSelection === 'scissor' && playerSelection === 'paper'):
                 divResult.textContent = 'You Lose! Scissor beats Paper';
-                return 'compWins';
+                round +='compWins';
+                break;
 
             case (compSelection === 'rock' && playerSelection === 'paper'):
                 divResult.textContent = 'You Win! Paper beats Rock';
-                return 'playerWins';
+                round += 'playerWins';
+                break;
 
             case (compSelection === 'paper' && playerSelection === 'scissor'):
                 divResult.textContent = 'You Win! Scissor beats Paper';
-                return 'playerWins';
+                round += 'playerWins';
+                break;
 
             case (compSelection === 'scissor' && playerSelection === 'rock'):
                 divResult.textContent = 'You Win! Rock beats Scissor';
-                return 'playerWins';
+                round += 'playerWins';
+                break;
 
             case (compSelection === 'rock' && playerSelection === 'rock'):
                 divResult.textContent = 'Draw!';
+                round += 'Draw!';
                 break;
 
             case (compSelection === 'scissor' && playerSelection === 'scissor'):
                 divResult.textContent = 'Draw!';
+                round += 'Draw!';
                 break;
 
             case (compSelection === 'paper' && playerSelection === 'paper'):
                 divResult.textContent = 'Draw!'
+                round += 'Draw!';
                 break;
 
-            default:
-                divResult.textContent = 'Your choice is invalid';
-            playRound(getComputerChoice(), getPlayerChoice());
-
-
             }
+            
+            return logResult(round);
+
         }
 
         game();
