@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function getPlayerChoice() {
     let userInput = prompt("Enter Your Selection");
 
@@ -28,51 +27,76 @@ function getComputerChoice() {
 let compWins = 0;
 let userWins = 0;
 
-function play() {
+function play(userChoice) {
 
-    sameAnswer:
-    for (let i = 0; i < 5; i++) {
-        
-        let compChoice = getComputerChoice();
+    draw.innerText = "";
 
-        let userChoice = getPlayerChoice();
-        
-        switch (true) {
-            case compChoice === 'rock' && userChoice === 'paper':
-                userWins += 1;
-                break;
-            case compChoice === 'rock' && userChoice === 'scissor':
-                compWins += 1;
-                break;
-            case compChoice === 'paper' && userChoice === 'rock':
-                compWins += 1;
-                break;
-            case compChoice === 'paper' && userChoice === 'scissor':
-                userWins += 1;
-                break;
-            case compChoice === 'scissor' && userChoice === 'rock':
-                userWins += 1;
-                break;
-            case compChoice === 'scissor' && userChoice === 'paper':
-                compWins += 1;
-                break;
-            case compChoice === userChoice:
-                console.log("redo loop");
-                i -= 1;
-                continue sameAnswer;
-                
-        }
+    let compChoice = getComputerChoice();
 
-        console.log(`Computer wins: ${compWins} \n User wins: ${userWins}`);
+    switch (true) {
+        case compChoice === 'rock' && userChoice === 'paper':
+            userWins += 1;
+            break;
+        case compChoice === 'rock' && userChoice === 'scissor':
+            compWins += 1;
+            break;
+        case compChoice === 'paper' && userChoice === 'rock':
+            compWins += 1;
+            break;
+        case compChoice === 'paper' && userChoice === 'scissor':
+            userWins += 1;
+            break;
+        case compChoice === 'scissor' && userChoice === 'rock':
+            userWins += 1;
+            break;
+        case compChoice === 'scissor' && userChoice === 'paper':
+            compWins += 1;
+            break;
+        case compChoice === userChoice:
+            draw.innerText = "draw";
 
-        if (compWins > 2) return console.log("Computer wins");
-        if (userWins > 2) return console.log("User wins");
+
+    }
+
+    score.innerText = `Current computer wins: ${compWins} \n Curent user wins: ${userWins}`;
+
+    if (compWins == 5) {
+        results.innerText = "Computer Wins!"
+        btnRock.disabled = true;
+        btnPaper.disabled = true;
+        btnScissor.disabled = true;
+    }
+    if (userWins == 5) {
+        results.innerText = "User Wins!"
+        btnRock.disabled = true;
+        btnPaper.disabled = true;
+        btnScissor.disabled = true;
     }
 }
 
+const results = document.querySelector("#results");
+const score = document.querySelector(".score");
+const draw = document.querySelector(".draw");
 
+const btnContainer = document.querySelector("#playerSelContainer");
 
-play();
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissor = document.querySelector("#scissor");
+
+btnContainer.addEventListener('click', (e) => {
+    switch (e.target.id) {
+        case btnRock.id:
+            play("rock");
+            break;
+        case btnPaper.id:
+            play("paper");
+            break;
+        case btnScissor.id:
+            play("scissor");
+            break;
+    };
+})
 
 
 
@@ -110,80 +134,3 @@ play();
     print to console who won 
 
 */
-=======
-    function getCompSel() {
-
-        let ranNum = Math.floor((Math.random() * 3) + 1)
-        console.log(ranNum);
-
-        switch (ranNum) {
-            case 1:
-                return "rock";
-
-            case 2:
-                return "paper";
-
-            case 3:
-                return "scissor";
-
-            default:
-                console.log("Uh-oh");
-        }
-
-        /*
-        Get a random number
-        1 is rock 2 is paper 3 is scissors
-        return answer
-        */
-
-    }
-
-    function getPlayerSel() {
-        let playerSel = prompt("Type rock, paper, or scissor");
-        return playerSel.toLowerCase();
-    }
-
-    function getRoundWin(compSel, playerSel) {
-
-
-        //if comp wins add one to compWins if playWins add one to playwins
-        //return who wins as a string
-    }
-
-    let compWins = 0;
-    let playWins = 0;
-    function game() {
-
-        //for(){
-
-        let compSel = getCompSel();
-        let playerSel = getPlayerSel();
-
-        console.log(getRoundWin(compSel, playerSel));
-
-
-        //}
-
-        if (compWins > playWins) {
-            return "Computer Wins";
-        }
-        else if (compWins < playWins) {
-            return "Player Wins";
-        }
-        else return "Draw";
-    }
-
-    console.log(game());
-
-    /*
-    Get a random computer selection for Rock or paper or scissors
-    Get input from the user 
-    Convert user input to all lowercase 
-    Make a funtion the loops 5 times
-    compare (play the game) the computer selection and the user selection 
-    log the winner or the draw 
-    Store if compute won or if player won
-    End when a player gets 3 wins 
-    report who won the most games.
-    */
->>>>>>> 346c2dbcdb7d84f6eb637eb6fba2f80497fbb4d2
