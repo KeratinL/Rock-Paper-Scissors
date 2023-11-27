@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function getPlayerChoice() {
     let userInput = prompt("Enter Your Selection");
 
@@ -109,3 +110,80 @@ play();
     print to console who won 
 
 */
+=======
+    function getCompSel() {
+
+        let ranNum = Math.floor((Math.random() * 3) + 1)
+        console.log(ranNum);
+
+        switch (ranNum) {
+            case 1:
+                return "rock";
+
+            case 2:
+                return "paper";
+
+            case 3:
+                return "scissor";
+
+            default:
+                console.log("Uh-oh");
+        }
+
+        /*
+        Get a random number
+        1 is rock 2 is paper 3 is scissors
+        return answer
+        */
+
+    }
+
+    function getPlayerSel() {
+        let playerSel = prompt("Type rock, paper, or scissor");
+        return playerSel.toLowerCase();
+    }
+
+    function getRoundWin(compSel, playerSel) {
+
+
+        //if comp wins add one to compWins if playWins add one to playwins
+        //return who wins as a string
+    }
+
+    let compWins = 0;
+    let playWins = 0;
+    function game() {
+
+        //for(){
+
+        let compSel = getCompSel();
+        let playerSel = getPlayerSel();
+
+        console.log(getRoundWin(compSel, playerSel));
+
+
+        //}
+
+        if (compWins > playWins) {
+            return "Computer Wins";
+        }
+        else if (compWins < playWins) {
+            return "Player Wins";
+        }
+        else return "Draw";
+    }
+
+    console.log(game());
+
+    /*
+    Get a random computer selection for Rock or paper or scissors
+    Get input from the user 
+    Convert user input to all lowercase 
+    Make a funtion the loops 5 times
+    compare (play the game) the computer selection and the user selection 
+    log the winner or the draw 
+    Store if compute won or if player won
+    End when a player gets 3 wins 
+    report who won the most games.
+    */
+>>>>>>> 346c2dbcdb7d84f6eb637eb6fba2f80497fbb4d2
